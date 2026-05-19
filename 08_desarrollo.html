@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e0f0d;--bg2:#141612;--bg3:#1b1e19;--border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.11);--text:#e6ebe4;--text2:#8a9186;--text3:#525750;--accent:#3ecba0;--adim:rgba(62,203,160,0.07);--adim2:rgba(62,203,160,0.14);--serif:"Playfair Display",Georgia,serif;--sans:"DM Sans",system-ui,sans-serif;--mono:"DM Mono",monospace;}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.65;min-height:100vh}
+.page{padding:3.5rem 3.5rem 4rem;max-width:860px;margin:0 auto;animation:up .6s ease both}
+.sec-header{display:flex;align-items:flex-start;gap:1.75rem;margin-bottom:2.5rem}
+.sec-num{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.1em;padding-top:8px;flex-shrink:0}
+.sec-title{font-family:var(--serif);font-size:2.2rem;color:var(--text);line-height:1.12}
+.body{font-size:14px;color:var(--text2);line-height:1.88}
+.body p+p{margin-top:1rem}
+.callout{background:var(--bg3);border:1px solid var(--border2);border-left:2px solid var(--accent);border-radius:0 8px 8px 0;padding:1.4rem 1.75rem;margin:1.75rem 0;font-style:italic;color:var(--text);font-size:14px;line-height:1.75}
+.hyp-main{background:var(--adim);border:1px solid rgba(62,203,160,.18);border-radius:10px;padding:2rem 2.25rem;margin-bottom:1.25rem}
+.hyp-label{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem}
+.hyp-text{font-size:14px;color:var(--text);line-height:1.8}
+.obj-row{background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-top:1.75rem}
+.obj-head{padding:1.5rem 2rem;border-bottom:1px solid var(--border);font-size:14px;color:var(--text);line-height:1.7}
+.obj-head strong{font-weight:500;color:var(--accent)}
+.obj-grid{display:grid;grid-template-columns:1fr 1fr}
+.obj-card{padding:1.4rem 1.75rem;border-bottom:1px solid var(--border);border-right:1px solid var(--border);transition:background .2s}
+.obj-card:nth-child(even){border-right:none}
+.obj-card:nth-last-child(-n+2){border-bottom:none}
+.obj-card:hover{background:var(--bg3)}
+.obj-n{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.08em;margin-bottom:5px}
+.obj-t{font-size:13px;color:var(--text2);line-height:1.6}
+.theory-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-top:1.75rem}
+.theory-card{background:var(--bg2);padding:1.5rem;transition:background .2s}
+.theory-card:hover{background:var(--bg3)}
+.theory-glyph{font-size:1.4rem;margin-bottom:.75rem;opacity:.55}
+.theory-name{font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px}
+.theory-author{font-family:var(--mono);font-size:10px;color:var(--accent);margin-bottom:8px;letter-spacing:.05em}
+.theory-desc{font-size:12px;color:var(--text2);line-height:1.6}
+.block-label{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem;margin-top:2.5rem}
+.phases{margin-top:1.5rem}
+.phase{display:grid;grid-template-columns:52px 1fr;gap:1.5rem;align-items:start;padding:1.75rem 0;border-bottom:1px solid var(--border)}
+.phase:last-child{border-bottom:none}
+.phase-num{font-family:var(--serif);font-size:2.8rem;color:var(--border2);line-height:1;font-style:italic;padding-top:2px}
+.phase-label{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px}
+.phase-title{font-size:15px;font-weight:500;color:var(--text);margin-bottom:6px}
+.phase-desc{font-size:13px;color:var(--text2);line-height:1.7}
+.phase-tag{display:inline-block;margin-top:10px;background:var(--bg3);border:1px solid var(--border2);border-radius:20px;font-family:var(--mono);font-size:10px;color:var(--text3);padding:3px 10px}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-top:1.5rem}
+.tool-card{background:var(--bg2);padding:1.5rem;transition:background .2s}
+.tool-card:hover{background:var(--bg3)}
+.tool-badge{display:inline-block;margin-bottom:.75rem;background:var(--adim2);border:1px solid rgba(62,203,160,.22);border-radius:4px;font-family:var(--mono);font-size:10px;color:var(--accent);padding:3px 8px;letter-spacing:.07em;text-transform:uppercase}
+.tool-badge.future{background:rgba(82,87,80,.15);border-color:var(--border2);color:var(--text3)}
+.tool-name{font-size:13px;font-weight:500;color:var(--text);margin-bottom:4px}
+.tool-desc{font-size:12px;color:var(--text2);line-height:1.6}
+.tool-future-note{border-top:1px solid var(--border);margin-top:10px;padding-top:10px;font-family:var(--mono);font-size:10px;color:var(--text3)}
+@keyframes up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){.page{padding:2rem 1.25rem}.obj-grid{grid-template-columns:1fr}.obj-card{border-right:none!important}.obj-card:nth-last-child(-n+2){border-bottom:1px solid var(--border)}.obj-card:last-child{border-bottom:none}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="sec-header"><span class="sec-num">07</span><h1 class="sec-title">Desarrollo del proyecto</h1></div>
+  <div class="body">
+    <p>La metodología se estructura en tres fases de alcance real para esta investigación, con proyección explícita hacia dos fases futuras. El serious game es el eje central; el diseño paramétrico potenciado con IA es el traductor de datos en decisiones de diseño.</p>
+
+    <div class="block-label">Fases de la investigación</div>
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-num">I</div>
+        <div>
+          <div class="phase-label">Serious Game · Datos cualitativos</div>
+          <div class="phase-title">Interfaz lúdica multiescalar</div>
+          <div class="phase-desc">Simulación de escenarios habitacionales donde los usuarios configuran tipologías de vivienda, modifican elementos espaciales y perciben fachadas, espacios públicos y mobiliario urbano en múltiples escalas. Se registran decisiones explícitas (colocar / quitar elementos, cambiar colores y texturas) e implícitas (tiempos de permanencia, rutas, interacción con fachadas). Opera como interfaz accesible que reduce la brecha tecnológica.</div>
+          <span class="phase-tag">Referente: Block by Block · UN-Habitat (2021)</span>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-num">II</div>
+        <div>
+          <div class="phase-label">Base de datos · ML</div>
+          <div class="phase-title">Estructuración de variables de diseño</div>
+          <div class="phase-desc">Los datos capturados se sistematizan en variables cuantificables: preferencias tipológicas, gradientes público-privado, umbrales de densidad percibida, patrones de uso de espacios de transición. El machine learning —mediante LunchBoxML en Grasshopper o Python 3 en Rhino 8— detecta patrones en esta base conductual y en las condiciones físico-naturales del sitio en Tlajomulco.</div>
+          <span class="phase-tag">LunchBoxML · Rhino 8 + Python 3 · QGIS</span>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-num">III</div>
+        <div>
+          <div class="phase-label">Diseño Paramétrico + IA</div>
+          <div class="phase-title">Modelo computacional de diseño</div>
+          <div class="phase-desc">Los datos y patrones se traducen en parámetros que alimentan un modelo en Grasshopper: tipologías de vivienda, morfología del conjunto, espacios de transición y evaluación de emplazamientos. Raven (el agente IA más integrado del ecosistema Rhino/Grasshopper) potencia la escritura de scripts y la generación de variantes. Wallacei permite optimización multi-objetivo. El resultado deriva hacia BIM para documentación constructiva.</div>
+          <span class="phase-tag">Grasshopper · Raven AI · Wallacei · BIM</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-label">Herramientas tecnológicas</div>
+    <div class="tools-grid">
+      <div class="tool-card"><div class="tool-badge">Serious Game</div><div class="tool-name">Juego serio multiescalar</div><div class="tool-desc">Instrumento principal. Captura decisiones explícitas e implícitas de usuarios potenciales en simulaciones espaciales interactivas a escala de vivienda, conjunto y entorno urbano.</div></div>
+      <div class="tool-card"><div class="tool-badge">GH + IA</div><div class="tool-name">Grasshopper + Raven + Wallacei</div><div class="tool-desc">Diseño paramétrico potenciado con IA conversacional para exploración de variantes y optimización multi-objetivo basada en los parámetros conductuales del usuario.</div></div>
+      <div class="tool-card"><div class="tool-badge">ML</div><div class="tool-name">Machine Learning</div><div class="tool-desc">Detección de patrones conductuales y análisis de condiciones físico-naturales del sitio. Integrado en Grasshopper vía LunchBoxML o Rhino 8 con entorno Python 3.</div></div>
+      <div class="tool-card"><div class="tool-badge">IoT</div><div class="tool-name">Sensores e IoT</div><div class="tool-desc">Conteo, densidad, permanencia y flujos peatonales como datos cuantitativos complementarios. Integrado como referente metodológico y posible capa de validación en campo.</div></div>
+      <div class="tool-card"><div class="tool-badge">AR</div><div class="tool-name">Realidad Aumentada</div><div class="tool-desc">Visualización de propuestas sobre el sitio real para validación con usuarios en campo. Reduce la abstracción del modelo digital y facilita la participación comunitaria.</div></div>
+      <div class="tool-card"><div class="tool-badge">BIM</div><div class="tool-name">Metodología BIM</div><div class="tool-desc">Puente entre el modelo paramétrico y la documentación técnica constructiva. Gestión multidimensional: tiempo (4D), costo (5D), sostenibilidad (7D).</div></div>
+      <div class="tool-card"><div class="tool-badge future">Proyección futura</div><div class="tool-name">Blockchain · DataBarrio ZMG</div><div class="tool-desc">Gobernanza y seguridad para datos de habitabilidad generados por los propios habitantes. Registro inmutable + almacenamiento descentralizado (IPFS).</div><div class="tool-future-note">↗ No implementado en esta investigación</div></div>
+      <div class="tool-card"><div class="tool-badge future">Proyección futura</div><div class="tool-name">Gemelo Digital Participativo</div><div class="tool-desc">Evolución del sistema hacia una representación virtual actualizada con datos post-ocupación. El serious game como interfaz de reportes comunitarios y gobernanza continua.</div><div class="tool-future-note">↗ Proyección del sistema metodológico</div></div>
+    </div>
+  </div>
+</div>
+</body></html>

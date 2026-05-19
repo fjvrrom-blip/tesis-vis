@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e0f0d;--bg2:#141612;--bg3:#1b1e19;--border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.11);--text:#e6ebe4;--text2:#8a9186;--text3:#525750;--accent:#3ecba0;--adim:rgba(62,203,160,0.07);--adim2:rgba(62,203,160,0.14);--serif:"Playfair Display",Georgia,serif;--sans:"DM Sans",system-ui,sans-serif;--mono:"DM Mono",monospace;}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.65;min-height:100vh}
+.page{padding:3.5rem 3.5rem 4rem;max-width:860px;margin:0 auto;animation:up .6s ease both}
+.sec-header{display:flex;align-items:flex-start;gap:1.75rem;margin-bottom:2.5rem}
+.sec-num{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.1em;padding-top:8px;flex-shrink:0}
+.sec-title{font-family:var(--serif);font-size:2.2rem;color:var(--text);line-height:1.12}
+.body{font-size:14px;color:var(--text2);line-height:1.88}
+.body p+p{margin-top:1rem}
+.callout{background:var(--bg3);border:1px solid var(--border2);border-left:2px solid var(--accent);border-radius:0 8px 8px 0;padding:1.4rem 1.75rem;margin:1.75rem 0;font-style:italic;color:var(--text);font-size:14px;line-height:1.75}
+.hyp-main{background:var(--adim);border:1px solid rgba(62,203,160,.18);border-radius:10px;padding:2rem 2.25rem;margin-bottom:1.25rem}
+.hyp-label{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem}
+.hyp-text{font-size:14px;color:var(--text);line-height:1.8}
+.obj-row{background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-top:1.75rem}
+.obj-head{padding:1.5rem 2rem;border-bottom:1px solid var(--border);font-size:14px;color:var(--text);line-height:1.7}
+.obj-head strong{font-weight:500;color:var(--accent)}
+.obj-grid{display:grid;grid-template-columns:1fr 1fr}
+.obj-card{padding:1.4rem 1.75rem;border-bottom:1px solid var(--border);border-right:1px solid var(--border);transition:background .2s}
+.obj-card:nth-child(even){border-right:none}
+.obj-card:nth-last-child(-n+2){border-bottom:none}
+.obj-card:hover{background:var(--bg3)}
+.obj-n{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.08em;margin-bottom:5px}
+.obj-t{font-size:13px;color:var(--text2);line-height:1.6}
+.theory-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-top:1.75rem}
+.theory-card{background:var(--bg2);padding:1.5rem;transition:background .2s}
+.theory-card:hover{background:var(--bg3)}
+.theory-glyph{font-size:1.4rem;margin-bottom:.75rem;opacity:.55}
+.theory-name{font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px}
+.theory-author{font-family:var(--mono);font-size:10px;color:var(--accent);margin-bottom:8px;letter-spacing:.05em}
+.theory-desc{font-size:12px;color:var(--text2);line-height:1.6}
+.block-label{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem;margin-top:2.5rem}
+.phases{margin-top:1.5rem}
+.phase{display:grid;grid-template-columns:52px 1fr;gap:1.5rem;align-items:start;padding:1.75rem 0;border-bottom:1px solid var(--border)}
+.phase:last-child{border-bottom:none}
+.phase-num{font-family:var(--serif);font-size:2.8rem;color:var(--border2);line-height:1;font-style:italic;padding-top:2px}
+.phase-label{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px}
+.phase-title{font-size:15px;font-weight:500;color:var(--text);margin-bottom:6px}
+.phase-desc{font-size:13px;color:var(--text2);line-height:1.7}
+.phase-tag{display:inline-block;margin-top:10px;background:var(--bg3);border:1px solid var(--border2);border-radius:20px;font-family:var(--mono);font-size:10px;color:var(--text3);padding:3px 10px}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-top:1.5rem}
+.tool-card{background:var(--bg2);padding:1.5rem;transition:background .2s}
+.tool-card:hover{background:var(--bg3)}
+.tool-badge{display:inline-block;margin-bottom:.75rem;background:var(--adim2);border:1px solid rgba(62,203,160,.22);border-radius:4px;font-family:var(--mono);font-size:10px;color:var(--accent);padding:3px 8px;letter-spacing:.07em;text-transform:uppercase}
+.tool-badge.future{background:rgba(82,87,80,.15);border-color:var(--border2);color:var(--text3)}
+.tool-name{font-size:13px;font-weight:500;color:var(--text);margin-bottom:4px}
+.tool-desc{font-size:12px;color:var(--text2);line-height:1.6}
+.tool-future-note{border-top:1px solid var(--border);margin-top:10px;padding-top:10px;font-family:var(--mono);font-size:10px;color:var(--text3)}
+@keyframes up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){.page{padding:2rem 1.25rem}.obj-grid{grid-template-columns:1fr}.obj-card{border-right:none!important}.obj-card:nth-last-child(-n+2){border-bottom:1px solid var(--border)}.obj-card:last-child{border-bottom:none}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="sec-header"><span class="sec-num">04</span><h1 class="sec-title">Hipótesis</h1></div>
+  <div class="body">
+    <div class="hyp-main">
+      <div class="hyp-label">Hipótesis principal</div>
+      <div class="hyp-text">Si se desarrolla una metodología de diseño urbano-arquitectónico que integre instrumentos de recolección de datos cualitativos y conductuales —como el serious game— con herramientas de diseño paramétrico computacional potenciadas con inteligencia artificial y machine learning, entonces será posible generar propuestas de vivienda de interés social con mayor adecuación a la diversidad de sus potenciales habitantes y mayor coherencia con la complejidad del territorio periurbano en la ZMG.</div>
+    </div>
+    <p>Como hipótesis secundarias se plantea que:</p>
+    <p>— Los datos conductuales obtenidos mediante el serious game son traducibles en parámetros de diseño operables directamente en Grasshopper, generando un vínculo metodológico entre la participación del usuario y el modelo computacional.</p>
+    <p>— La integración de sensores IoT y realidad aumentada enriquece tanto la recolección de datos cualitativos como la validación de propuestas con usuarios en campo, reduciendo la abstracción del modelo digital.</p>
+    <p>— El serious game como interfaz reduce la brecha tecnológica, permitiendo la participación activa de comunidades con acceso tecnológico heterogéneo, aspecto crítico en el contexto periurbano de la ZMG.</p>
+  </div>
+</div>
+</body></html>
